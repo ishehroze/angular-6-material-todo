@@ -1,3 +1,33 @@
 <mat-card>
-  <mat-card>Tasks to be put here...</mat-card>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>To Do Items</mat-card-title>
+    </mat-card-header>
+    <mat-card-content> 
+      <mat-list>
+        <!-- <mat-divider [inset]="true"></mat-divider> -->
+        <mat-list-item>To-do 1</mat-list-item>
+        <mat-divider [inset]="true"></mat-divider>
+        <mat-list-item>To-do 2</mat-list-item>
+        <mat-divider [inset]="true"></mat-divider>
+      </mat-list>
+    </mat-card-content>  
+    <mat-card-footer>&nbsp;</mat-card-footer>
+  </mat-card>
+  &nbsp;
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Completed Items</mat-card-title>
+    </mat-card-header>
+    <mat-card-content> 
+      <mat-list>
+        <!-- <mat-divider [inset]="true"></mat-divider> -->
+        <mat-list-item style="text-decoration: line-through; color: lightgray;">To-do 1</mat-list-item>
+        <mat-divider [inset]="true"></mat-divider>
+        <mat-list-item style="text-decoration: line-through; color: lightgray;">To-do 2</mat-list-item>
+        <mat-divider [inset]="true"></mat-divider>
+      </mat-list>
+    </mat-card-content>  
+    <mat-card-footer>&nbsp;</mat-card-footer>
+  </mat-card>
 </mat-card>
