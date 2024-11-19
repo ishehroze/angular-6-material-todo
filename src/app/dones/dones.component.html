@@ -1,5 +1,5 @@
 <mat-list>
   <h3 mat-subheader>Done</h3>
   <mat-divider [inset]="true"></mat-divider>
-  <app-done-item *ngFor="let item of [1, 2, 3]"></app-done-item>
+  <app-done-item *ngFor="let task of doneTasks" [task]="task"></app-done-item>
 </mat-list>
