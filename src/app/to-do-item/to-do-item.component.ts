@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Task } from '../task';
 
 @Component({
   selector: 'app-to-do-item',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./to-do-item.component.css']
 })
 export class ToDoItemComponent implements OnInit {
+  @Input() task: Task;
+  @Input() isFirst: boolean;
+  @Input() isLast: boolean;
+  @Input() index: number;
 
   constructor() { }
 
