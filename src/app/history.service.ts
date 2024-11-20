@@ -1,17 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Activity } from './activity';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HistoryService {
-  constructor(
-    private activityList:Activity[]
-  ) {
-    this.activityList = [];
-  }
+  public activityList:Activity[] = [];
 
-  getActivityList(){
-    return this.activityList;
+  getActivityList(): Observable<Activity[]> {
+    return of(this.activityList);
   }
 }
