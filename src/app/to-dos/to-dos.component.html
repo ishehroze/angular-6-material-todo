@@ -5,7 +5,8 @@
     [task]="task"
     [index]="index"
     [isLast]="isLast"
-    [isFirst]="isFirst">
+    [isFirst]="isFirst"
+    (deleteTask)="deleteToDoTask($event)">
   </app-to-do-item>
   <mat-divider [inset]="true"></mat-divider>
   <app-add-task></app-add-task>

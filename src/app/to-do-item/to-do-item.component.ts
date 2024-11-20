@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Task } from '../task';
 
 @Component({
@@ -11,10 +11,15 @@ export class ToDoItemComponent implements OnInit {
   @Input() isFirst: boolean;
   @Input() isLast: boolean;
   @Input() index: number;
+  @Output() deleteTask = new EventEmitter<number>();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  delete() {
+    this.deleteTask.emit(this.index);
   }
 
 }

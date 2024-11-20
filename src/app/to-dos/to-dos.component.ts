@@ -24,4 +24,9 @@ export class ToDosComponent implements OnInit {
     )
   }
 
+  deleteToDoTask(ix) {
+    this.taskService.deleteTask(ix);
+    this.getToDoTasks();
+  }
+
 }
