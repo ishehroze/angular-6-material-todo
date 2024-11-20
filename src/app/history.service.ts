@@ -11,4 +11,10 @@ export class HistoryService {
   getActivityList(): Observable<Activity[]> {
     return of(this.activityList);
   }
+  addActivity(activity: Activity): void{
+    this.activityList.push(activity)
+  }
+  clearActivityList(): void{
+    this.activityList = [];
+  }
 }

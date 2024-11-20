@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../task.service';
 import { Task } from '../task';
+import { HistoryService } from '../history.service';
+import { Activity, ActivityType } from '../activity';
 
 @Component({
   selector: 'app-to-dos',
@@ -11,7 +13,8 @@ export class ToDosComponent implements OnInit {
   toDoTasks: Task[];
 
   constructor(
-    public taskService: TaskService
+    public taskService: TaskService,
+    public historyService: HistoryService
   ) { }
 
   ngOnInit() {
@@ -26,6 +29,7 @@ export class ToDosComponent implements OnInit {
 
   deleteToDoTask(ix) {
     this.taskService.deleteTask(ix);
+    this.historyService.addActivity( new Activity(this.toDoTasks[ix], ActivityType.DELETE) );
     this.getToDoTasks();
   }
 

@@ -1,8 +1,16 @@
 <mat-list>
   <div style="display: flex">
     <h3 mat-subheader>Activity Log</h3>
-    <button mat-button style="margin-left: auto; margin-bottom: 5px">Clear Log</button>
+    <button
+      mat-button style="margin-left: auto; margin-bottom: 5px"
+      (click)="clearLogEntries()">Clear Log</button>
   </div>
   <mat-divider [inset]="true"></mat-divider>
-  <app-log-entry *ngFor="let item of [1, 2, 3]"></app-log-entry>
+  <app-log-entry *ngFor="let logEntry of logEntries" [logEntry]="logEntry"></app-log-entry>
+  <mat-list-item *ngIf="!logEntries.length">
+    <p style="text-align: center; color: lightgray;" mat-line>&nbsp;</p>
+    <h2 style="text-align: center; color: lightgray; font-size:x-large;" mat-line>Nothing to show</h2>
+    <p style="text-align: center; color: lightgray;" mat-line>&nbsp;</p>
+  </mat-list-item>
+  <mat-divider [inset]="true"></mat-divider>
 </mat-list>

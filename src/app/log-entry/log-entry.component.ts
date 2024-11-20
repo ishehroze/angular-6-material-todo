@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Activity } from '../activity';
 
 @Component({
   selector: 'app-log-entry',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./log-entry.component.css']
 })
 export class LogEntryComponent implements OnInit {
-
+  @Input() logEntry: Activity;
   constructor() { }
 
   ngOnInit() {

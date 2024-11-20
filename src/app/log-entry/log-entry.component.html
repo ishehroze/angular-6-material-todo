@@ -1,9 +1,9 @@
 <mat-list-item>
-  <mat-icon mat-list-icon style="user-select: none;">delete</mat-icon>
-  <p mat-line>Task 1</p>
-  <p mat-line style="font-size: smaller;">Deleted task</p>
+  <mat-icon mat-list-icon style="user-select: none;">{{ logEntry.getActivityIcon() }}</mat-icon>
+  <p mat-line>{{ logEntry.getTaskDescription() }}</p>
+  <p mat-line style="font-size: smaller;">{{ logEntry.getActivityRemarks() }}</p>
   <div>
-    <p style="font-size: smaller; text-align: right;">2024-11-19 07:14:27 AM</p>
+    <p style="font-size: smaller; text-align: right;">{{ logEntry.getTimeStamp() }}</p>
   </div>
 </mat-list-item>
 <mat-divider [inset]="true"></mat-divider>
