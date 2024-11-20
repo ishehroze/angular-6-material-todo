@@ -1,7 +1,7 @@
 <mat-list>
   <h3 mat-subheader>To Dos</h3>
   <app-to-do-item
-    *ngFor="let task of toDoTasks; let index = index; let isLast = last; let isFirst = first;"
+    *ngFor="let task of toDoTasks; index as index; last as isLast; first as isFirst;"
     [task]="task"
     [index]="index"
     [isLast]="isLast"
