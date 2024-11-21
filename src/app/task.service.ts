@@ -37,7 +37,7 @@ export class TaskService {
     if (ix === this.taskList.length - 1) {
       throw new RangeError('Cannot move the last task down');
     } else {
-      this.taskList.splice(ix, 2, this.taskList[ix], this.taskList[ix + 1]);
+      this.taskList.splice(ix, 2, this.taskList[ix + 1], this.taskList[ix]);
     }
   }
   getTasks(): Observable<Task[]> {
