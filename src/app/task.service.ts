@@ -40,10 +40,7 @@ export class TaskService {
       this.taskList.splice(ix, 2, this.taskList[ix], this.taskList[ix + 1]);
     }
   }
-  getToDoTasks(): Observable<Task[]> {
-    return of(this.taskList.filter(task => !task.done));
-  }
-  getDoneTasks(): Observable<Task[]> {
-    return of(this.taskList.filter(task => task.done));
+  getTasks(): Observable<Task[]> {
+    return of(this.taskList);
   }
 }

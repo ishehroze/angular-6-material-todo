@@ -10,8 +10,7 @@ import { Activity, ActivityType } from '../activity';
   styleUrls: ['./todo-container.component.css']
 })
 export class TodoContainerComponent implements OnInit {
-  toDoTasks: Task[];
-  doneTasks: Task[];
+  tasks: Task[];
 
   constructor(
     public taskService: TaskService,
@@ -19,26 +18,19 @@ export class TodoContainerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getToDoTasks();
-    this.getDoneTasks();
+    this.getTasks();
   }
 
-  getToDoTasks() {
-    this.taskService.getToDoTasks().subscribe(
-      tasks => { this.toDoTasks = tasks }
+  getTasks() {
+    this.taskService.getTasks().subscribe(
+      tasks => { this.tasks = tasks; }
     )
   }
 
-  getDoneTasks() {
-    this.taskService.getDoneTasks().subscribe(
-      tasks => { this.doneTasks = tasks; }
-    )
-  }
-
-  deleteToDoTask(ix) {
+  deleteTask(ix) {
+    let task = this.tasks[ix];
     this.taskService.deleteTask(ix);
-    this.historyService.addActivity( new Activity(this.toDoTasks[ix], ActivityType.DELETE) );
-    this.getToDoTasks();
-    this.getDoneTasks();
+    this.historyService.addActivity( new Activity(task, ActivityType.DELETE) );
+    this.getTasks();
   }
 }

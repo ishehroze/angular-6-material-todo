@@ -1,11 +1,13 @@
-<mat-list-item>
-  <mat-icon mat-list-icon style="cursor: pointer; user-select: none;">check_box</mat-icon>
-  <p style="text-decoration: line-through; color: lightgray;" mat-line>{{ task.description }}</p>
-  <button mat-icon-button>
-    <mat-icon>edit</mat-icon>
-  </button>
-  <button mat-icon-button>
-    <mat-icon>delete</mat-icon>
-  </button>
-</mat-list-item>
-<mat-divider [inset]="true"></mat-divider>
+<ng-container *ngIf="task.done">
+  <mat-list-item>
+    <mat-icon mat-list-icon style="cursor: pointer; user-select: none;">check_box</mat-icon>
+    <p style="text-decoration: line-through; color: lightgray;" mat-line>{{ task.description }}</p>
+    <button mat-icon-button>
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button (click)="delete()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-list-item>
+  <mat-divider [inset]="true"></mat-divider>
+</ng-container>

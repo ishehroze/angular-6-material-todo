@@ -4,12 +4,10 @@
       <mat-list id="to-dos">
         <h3 mat-subheader>To Dos</h3>
         <app-to-do-item
-          *ngFor="let task of toDoTasks; index as index; last as isLast; first as isFirst;"
+          *ngFor="let task of tasks; index as index; last as isLast; first as isFirst;"
           [task]="task"
           [index]="index"
-          [isLast]="isLast"
-          [isFirst]="isFirst"
-          (deleteTask)="deleteToDoTask($event)">
+          (deleteTask)="deleteTask($event)">
         </app-to-do-item>
         <mat-divider [inset]="true"></mat-divider>
         <app-add-task></app-add-task>
@@ -17,7 +15,12 @@
       <mat-list id="dones">
         <h3 mat-subheader>Done</h3>
         <mat-divider [inset]="true"></mat-divider>
-        <app-done-item *ngFor="let task of doneTasks" [task]="task"></app-done-item>
+        <app-done-item
+          *ngFor="let task of tasks; index as index"
+          [task]="task"
+          [index]="index"
+          (deleteTask)="deleteTask($event)">
+        </app-done-item>
       </mat-list>
     </mat-card-content>  
     <mat-card-footer>&nbsp;</mat-card-footer>

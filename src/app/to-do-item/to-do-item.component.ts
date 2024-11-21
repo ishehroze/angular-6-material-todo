@@ -8,8 +8,6 @@ import { Task } from '../task';
 })
 export class ToDoItemComponent implements OnInit {
   @Input() task: Task;
-  @Input() isFirst: boolean;
-  @Input() isLast: boolean;
   @Input() index: number;
   @Output() deleteTask = new EventEmitter<number>();
 
