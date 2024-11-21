@@ -10,8 +10,9 @@ import { Task } from '../task';
 export class DoneItemComponent implements OnInit {
   @Input() task: Task;
   @Input() index: number;
+  @Output() markTaskToDo = new EventEmitter<number>();
   @Output() deleteTask = new EventEmitter<number>();
-  
+
   constructor() { }
 
   ngOnInit() {
@@ -19,5 +20,9 @@ export class DoneItemComponent implements OnInit {
 
   delete() {
     this.deleteTask.emit(this.index);
+  }
+
+  markToDo() {
+    this.markTaskToDo.emit(this.index);
   }
 }

@@ -9,6 +9,7 @@ import { Task } from '../task';
 export class ToDoItemComponent implements OnInit {
   @Input() task: Task;
   @Input() index: number;
+  @Output() markTaskDone = new EventEmitter<number>();
   @Output() deleteTask = new EventEmitter<number>();
 
   constructor() { }
@@ -18,6 +19,10 @@ export class ToDoItemComponent implements OnInit {
 
   delete() {
     this.deleteTask.emit(this.index);
+  }
+
+  markDone() {
+    this.markTaskDone.emit(this.index);
   }
 
 }

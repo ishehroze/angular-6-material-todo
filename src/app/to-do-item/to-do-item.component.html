@@ -1,7 +1,10 @@
 <ng-container *ngIf="!task.done">
   <mat-divider [inset]="true"></mat-divider>
   <mat-list-item>
-    <mat-icon mat-list-icon style="cursor: pointer; user-select: none;">check_box_outline_blank</mat-icon>
+    <mat-icon
+      mat-list-icon
+      style="cursor: pointer; user-select: none;"
+      (click)="markDone()">check_box_outline_blank</mat-icon>
     <p mat-line>{{ task.description }}</p>
     <button mat-icon-button>
       <mat-icon>keyboard_arrow_up</mat-icon>

@@ -21,16 +21,28 @@ export class TodoContainerComponent implements OnInit {
     this.getTasks();
   }
 
-  getTasks() {
+  getTasks():void {
     this.taskService.getTasks().subscribe(
       tasks => { this.tasks = tasks; }
     )
   }
 
-  deleteTask(ix) {
+  deleteTask(ix:number):void {
     let task = this.tasks[ix];
     this.taskService.deleteTask(ix);
     this.historyService.addActivity( new Activity(task, ActivityType.DELETE) );
     this.getTasks();
   }
+
+  toggleTask(ix:number):void {
+    let task = this.tasks[ix];
+    this.taskService.toggleTaskDone(ix);
+    this.historyService.addActivity(
+      new Activity(
+        task,
+        task.done ? ActivityType.MARK_DONE : ActivityType.MARK_TO_DO
+      )
+    );
+  }
+
 }

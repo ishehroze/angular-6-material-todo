@@ -1,6 +1,9 @@
 <ng-container *ngIf="task.done">
   <mat-list-item>
-    <mat-icon mat-list-icon style="cursor: pointer; user-select: none;">check_box</mat-icon>
+    <mat-icon
+      mat-list-icon
+      style="cursor: pointer; user-select: none;"
+      (click)="markToDo()">check_box</mat-icon>
     <p style="text-decoration: line-through; color: lightgray;" mat-line>{{ task.description }}</p>
     <button mat-icon-button>
       <mat-icon>edit</mat-icon>
