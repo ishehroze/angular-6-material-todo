@@ -8,7 +8,9 @@
           [task]="task"
           [index]="index"
           (deleteTask)="deleteTask($event)"
-          (markTaskDone)="toggleTask($event)">
+          (markTaskDone)="toggleTask($event)"
+          (moveTaskUp)="moveTaskUp($event)"
+          (moveTaskDown)="moveTaskDown($event)">
         </app-to-do-item>
         <mat-divider [inset]="true"></mat-divider>
         <app-add-task></app-add-task>

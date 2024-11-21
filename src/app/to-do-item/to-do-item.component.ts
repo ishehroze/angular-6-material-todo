@@ -11,6 +11,8 @@ export class ToDoItemComponent implements OnInit {
   @Input() index: number;
   @Output() markTaskDone = new EventEmitter<number>();
   @Output() deleteTask = new EventEmitter<number>();
+  @Output() moveTaskUp = new EventEmitter<number>();
+  @Output() moveTaskDown = new EventEmitter<number>();
 
   constructor() { }
 
@@ -23,6 +25,14 @@ export class ToDoItemComponent implements OnInit {
 
   markDone() {
     this.markTaskDone.emit(this.index);
+  }
+
+  moveUp() {
+    this.moveTaskUp.emit(this.index);
+  }
+
+  moveDown() {
+    this.moveTaskDown.emit(this.index);
   }
 
 }

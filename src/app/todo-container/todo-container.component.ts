@@ -30,7 +30,7 @@ export class TodoContainerComponent implements OnInit {
   deleteTask(ix:number):void {
     let task = this.tasks[ix];
     this.taskService.deleteTask(ix);
-    this.historyService.addActivity( new Activity(task, ActivityType.DELETE) );
+    this.historyService.addActivity( new Activity(ix, task, ActivityType.DELETE) );
     this.getTasks();
   }
 
@@ -39,10 +39,29 @@ export class TodoContainerComponent implements OnInit {
     this.taskService.toggleTaskDone(ix);
     this.historyService.addActivity(
       new Activity(
+        ix,
         task,
         task.done ? ActivityType.MARK_DONE : ActivityType.MARK_TO_DO
       )
     );
+  }
+
+  moveTaskUp(ix:number):void {
+    let task = this.tasks[ix];
+    this.taskService.moveTaskUp(ix);
+    this.historyService.addActivity(
+      new Activity(ix, task, ActivityType.MOVE_UP)
+    );
+    this.getTasks();
+  }
+
+  moveTaskDown(ix:number):void {
+    let task = this.tasks[ix];
+    this.taskService.moveTaskDown(ix);
+    this.historyService.addActivity(
+      new Activity(ix, task, ActivityType.MOVE_DOWN)
+    );
+    this.getTasks();
   }
 
 }

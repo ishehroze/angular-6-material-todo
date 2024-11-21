@@ -15,8 +15,8 @@ export class LogEntryComponent implements OnInit {
       case ActivityType.ADD: return "Task added";
       case ActivityType.EDIT: return "Task edited";
       case ActivityType.DELETE: return "Task deleted";
-      case ActivityType.MOVE_UP: return "Task moved up";
-      case ActivityType.MOVE_DOWN: return "Task moved down";
+      case ActivityType.MOVE_UP: return "Task moved up from position " + (this.logEntry.getIndex() + 1);
+      case ActivityType.MOVE_DOWN: return "Task moved down from position " + (this.logEntry.getIndex() + 1);
       case ActivityType.MARK_DONE: return "Task marked as done";
       case ActivityType.MARK_TO_DO: return "Task marked as to-do";
       default: throw new Error("Invalid activity type");

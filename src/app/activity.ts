@@ -14,12 +14,16 @@ export class Activity {
   private timestamp: Date;
 
   constructor(
+    private index: number,
     private task: Task,
     private activityType: ActivityType,
   ) {
     this.timestamp = new Date();
   }
 
+  getIndex(){
+    return this.index;
+  }
   getActivityType(): ActivityType {
     return this.activityType;
   }
