@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material';
 import { MatIconModule } from '@angular/material';
 import { MatCheckboxModule } from '@angular/material';
+import { MatDialogModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,6 +20,7 @@ import { HistoryContainerComponent } from './history-container/history-container
 import { LogComponent } from './log/log.component';
 import { LogEntryComponent } from './log-entry/log-entry.component';
 import { AddTaskComponent } from './add-task/add-task.component';
+import { EditTaskDialogComponent } from './todo-container/todo-container.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { AddTaskComponent } from './add-task/add-task.component';
     HistoryContainerComponent,
     LogComponent,
     LogEntryComponent,
-    AddTaskComponent
+    AddTaskComponent,
+    EditTaskDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,11 @@ import { AddTaskComponent } from './add-task/add-task.component';
     MatFormFieldModule,
     MatButtonModule,
     MatIconModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    EditTaskDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

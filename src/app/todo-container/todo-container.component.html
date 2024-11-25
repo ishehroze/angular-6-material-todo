@@ -10,10 +10,10 @@
           (deleteTask)="deleteTask($event)"
           (markTaskDone)="toggleTask($event)"
           (moveTaskUp)="moveTaskUp($event)"
-          (moveTaskDown)="moveTaskDown($event)">
+          (moveTaskDown)="moveTaskDown($event)"
+          (editTask)="openEditTaskDialog()">
         </app-to-do-item>
         <mat-divider [inset]="true"></mat-divider>
-        <app-add-task></app-add-task>
       </mat-list>
       <mat-list id="dones">
         <h3 mat-subheader>Done</h3>
@@ -23,7 +23,8 @@
           [task]="task"
           [index]="index"
           (deleteTask)="deleteTask($event)"
-          (markTaskToDo)="toggleTask($event)">
+          (markTaskToDo)="toggleTask($event)"
+          (editTask)="openEditTaskDialog()">
         </app-done-item>
       </mat-list>
     </mat-card-content>  

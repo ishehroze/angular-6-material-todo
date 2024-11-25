@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { TaskService } from '../task.service';
 import { Task } from '../task';
 import { HistoryService } from '../history.service';
 import { Activity, ActivityType } from '../activity';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-todo-container',
@@ -14,7 +15,8 @@ export class TodoContainerComponent implements OnInit {
 
   constructor(
     public taskService: TaskService,
-    public historyService: HistoryService
+    public historyService: HistoryService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -63,5 +65,18 @@ export class TodoContainerComponent implements OnInit {
     );
     this.getTasks();
   }
+
+  openEditTaskDialog():void {
+    const dialogRef = this.dialog.open(EditTaskDialogComponent, {
+      width: '400px'
+    })
+  }
+}
+
+@Component({
+  selector: 'app-edit-task-dialog',
+  templateUrl: './edit-task-dialog.component.html'
+})
+export class EditTaskDialogComponent {
 
 }

@@ -13,6 +13,7 @@ export class ToDoItemComponent implements OnInit {
   @Output() deleteTask = new EventEmitter<number>();
   @Output() moveTaskUp = new EventEmitter<number>();
   @Output() moveTaskDown = new EventEmitter<number>();
+  @Output() editTask = new EventEmitter<number>();
 
   constructor() { }
 
@@ -33,6 +34,10 @@ export class ToDoItemComponent implements OnInit {
 
   moveDown() {
     this.moveTaskDown.emit(this.index);
+  }
+
+  edit() {
+    this.editTask.emit(this.index);
   }
 
 }
