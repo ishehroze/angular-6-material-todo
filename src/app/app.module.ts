@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material';
 import { MatIconModule } from '@angular/material';
 import { MatCheckboxModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -32,8 +33,7 @@ import { EditTaskDialogComponent } from './todo-container/todo-container.compone
     LogComponent,
     LogEntryComponent,
     AddTaskComponent,
-    EditTaskDialogComponent
-  ],
+    EditTaskDialogComponent  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -46,7 +46,8 @@ import { EditTaskDialogComponent } from './todo-container/todo-container.compone
     MatButtonModule,
     MatIconModule,
     MatCheckboxModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule
   ],
   entryComponents: [
     EditTaskDialogComponent

@@ -12,6 +12,7 @@ export class DoneItemComponent implements OnInit {
   @Input() index: number;
   @Output() markTaskToDo = new EventEmitter<number>();
   @Output() deleteTask = new EventEmitter<number>();
+  @Output() editTask = new EventEmitter<number>();
 
   constructor() { }
 
@@ -24,5 +25,9 @@ export class DoneItemComponent implements OnInit {
 
   markToDo() {
     this.markTaskToDo.emit(this.index);
+  }
+
+  edit() {
+    this.editTask.emit(this.index);
   }
 }

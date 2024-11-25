@@ -1,10 +1,10 @@
 <h1 mat-dialog-title>Edit task</h1>
 <div mat-dialog-content>
   <mat-form-field style="width: 100%;">
-    <input matInput>
+    <input matInput [(ngModel)]="data">
   </mat-form-field>
 </div>
 <div mat-dialog-actions align="end">
-  <button mat-button>Cancel</button>
-  <button mat-button>Okay</button>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="data">Okay</button>
 </div>

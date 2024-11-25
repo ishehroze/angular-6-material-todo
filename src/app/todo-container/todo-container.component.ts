@@ -3,7 +3,7 @@ import { TaskService } from '../task.service';
 import { Task } from '../task';
 import { HistoryService } from '../history.service';
 import { Activity, ActivityType } from '../activity';
-import { MatDialog } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-todo-container',
@@ -66,9 +66,17 @@ export class TodoContainerComponent implements OnInit {
     this.getTasks();
   }
 
-  openEditTaskDialog():void {
+  openEditTaskDialog(ix:number):void {
     const dialogRef = this.dialog.open(EditTaskDialogComponent, {
-      width: '400px'
+      width: '400px',
+      data: this.tasks[ix].description
+
+    })
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.taskService.updateTaskDescription(ix, result);
+        this.historyService.addActivity(new Activity(ix, this.tasks[ix], ActivityType.EDIT));
+      }
     })
   }
 }
@@ -78,5 +86,7 @@ export class TodoContainerComponent implements OnInit {
   templateUrl: './edit-task-dialog.component.html'
 })
 export class EditTaskDialogComponent {
-
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data:string
+  ){}
 }

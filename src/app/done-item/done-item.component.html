@@ -5,7 +5,7 @@
       style="cursor: pointer; user-select: none;"
       (click)="markToDo()">check_box</mat-icon>
     <p style="text-decoration: line-through; color: lightgray;" mat-line>{{ task.description }}</p>
-    <button mat-icon-button>
+    <button mat-icon-button (click)="edit()">
       <mat-icon>edit</mat-icon>
     </button>
     <button mat-icon-button (click)="delete()">
