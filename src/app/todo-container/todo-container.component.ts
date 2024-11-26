@@ -32,7 +32,7 @@ export class TodoContainerComponent implements OnInit {
   deleteTask(ix:number):void {
     let task = this.tasks[ix];
     this.taskService.deleteTask(ix);
-    this.historyService.addActivity( new Activity(ix, task, ActivityType.DELETE) );
+    this.historyService.addActivity( new Activity(ix, task.description, ActivityType.DELETE) );
     this.getTasks();
   }
 
@@ -42,7 +42,7 @@ export class TodoContainerComponent implements OnInit {
     this.historyService.addActivity(
       new Activity(
         ix,
-        task,
+        task.description,
         task.done ? ActivityType.MARK_DONE : ActivityType.MARK_TO_DO
       )
     );
@@ -52,7 +52,7 @@ export class TodoContainerComponent implements OnInit {
     let task = this.tasks[ix];
     this.taskService.moveTaskUp(ix);
     this.historyService.addActivity(
-      new Activity(ix, task, ActivityType.MOVE_UP)
+      new Activity(ix, task.description, ActivityType.MOVE_UP)
     );
     this.getTasks();
   }
@@ -61,7 +61,7 @@ export class TodoContainerComponent implements OnInit {
     let task = this.tasks[ix];
     this.taskService.moveTaskDown(ix);
     this.historyService.addActivity(
-      new Activity(ix, task, ActivityType.MOVE_DOWN)
+      new Activity(ix, task.description, ActivityType.MOVE_DOWN)
     );
     this.getTasks();
   }
@@ -74,8 +74,9 @@ export class TodoContainerComponent implements OnInit {
     })
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        let task = this.tasks[ix];
         this.taskService.updateTaskDescription(ix, result);
-        this.historyService.addActivity(new Activity(ix, this.tasks[ix], ActivityType.EDIT));
+        this.historyService.addActivity(new Activity(ix, task.description, ActivityType.EDIT));
       }
     })
   }

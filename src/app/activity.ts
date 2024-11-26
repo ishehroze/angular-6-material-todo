@@ -15,7 +15,7 @@ export class Activity {
 
   constructor(
     private index: number,
-    private task: Task,
+    private activityTitle: string,
     private activityType: ActivityType,
   ) {
     this.timestamp = new Date();
@@ -27,8 +27,8 @@ export class Activity {
   getActivityType(): ActivityType {
     return this.activityType;
   }
-  getTask(): Task {
-    return this.task;
+  getActivityTitle(): string {
+    return this.activityTitle;
   }
   getTimeStamp(): string {
     return this.timestamp.toISOString();

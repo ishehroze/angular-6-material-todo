@@ -1,6 +1,6 @@
 <mat-list-item>
   <mat-icon mat-list-icon style="user-select: none;">{{ getActivityIcon() }}</mat-icon>
-  <p mat-line>{{ logEntry.getTask().description }}</p>
+  <p mat-line>{{ logEntry.getActivityTitle() }}</p>
   <p mat-line style="font-size: smaller;">{{ getActivityRemarks() }}</p>
   <div>
     <p style="font-size: smaller; text-align: right;">{{ logEntry.getTimeStamp() }}</p>
