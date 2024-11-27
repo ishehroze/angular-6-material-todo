@@ -24,7 +24,7 @@
           [task]="task"
           [index]="index"
           (deleteTask)="deleteTask($event)"
-          (markTaskToDo)="moveTaskDown($event)"
+          (markTaskToDo)="toggleTask($event)"
           (editTask)="openEditTaskDialog($event)">
         </app-done-item>
       </mat-list>
