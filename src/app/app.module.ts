@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TodoContainerComponent } from './todo-container/todo-container.component';
+import { AddTaskDialogComponent, TodoContainerComponent } from './todo-container/todo-container.component';
 import { ToDoItemComponent } from './to-do-item/to-do-item.component';
 import { DoneItemComponent } from './done-item/done-item.component';
 import { HistoryContainerComponent } from './history-container/history-container.component';
@@ -33,7 +33,9 @@ import { EditTaskDialogComponent } from './todo-container/todo-container.compone
     LogComponent,
     LogEntryComponent,
     AddTaskComponent,
-    EditTaskDialogComponent  ],
+    EditTaskDialogComponent,
+    AddTaskDialogComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -50,7 +52,8 @@ import { EditTaskDialogComponent } from './todo-container/todo-container.compone
     FormsModule
   ],
   entryComponents: [
-    EditTaskDialogComponent
+    EditTaskDialogComponent,
+    AddTaskDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

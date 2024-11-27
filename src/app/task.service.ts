@@ -2,20 +2,15 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Task } from './task';
 
-const INITIAL_TASKLIST = [
-  new Task('Task 1', false),
-  new Task('Task 2', false),
-  new Task('Task 3', true)
-];
-
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
-  private taskList: Task[] = INITIAL_TASKLIST;
+  private taskList: Task[] = [];
 
-  addTask(task: Task) {
+  addTask(task: Task): number {
     this.taskList.push(task);
+    return this.taskList.length - 1;
   }
   updateTaskDescription(ix: number, description: string) {
     this.taskList[ix].description = description;

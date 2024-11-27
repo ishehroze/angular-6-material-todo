@@ -29,6 +29,18 @@ export class TodoContainerComponent implements OnInit {
     )
   }
 
+  addTask():void {
+    const dialogRef = this.dialog.open(AddTaskDialogComponent, {
+      width: '400px'
+    })
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        let ix = this.taskService.addTask(result);
+        this.historyService.addActivity(new Activity(ix, result.description, ActivityType.ADD));
+      }
+    })
+  }
+
   deleteTask(ix:number):void {
     let task = this.tasks[ix];
     this.taskService.deleteTask(ix);
@@ -90,4 +102,12 @@ export class EditTaskDialogComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data:string
   ){}
+}
+
+@Component({
+  selector: 'app-add-task-dialog',
+  templateUrl: './add-task-dialog.component.html'
+})
+export class AddTaskDialogComponent {
+  public task: Task = new Task("", false);
 }
