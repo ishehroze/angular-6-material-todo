@@ -7,6 +7,9 @@
           *ngFor="let task of tasks; index as index; last as isLast; first as isFirst;"
           [task]="task"
           [index]="index"
+          [doneTaskCount]="doneTaskCount"
+          [firstUndoneTaskIx]="firstUndoneTaskIx"
+          [lastUndoneTaskIx]="lastUndoneTaskIx"
           (deleteTask)="deleteTask($event)"
           (markTaskDone)="toggleTask($event)"
           (moveTaskUp)="moveTaskUp($event)"
@@ -16,7 +19,7 @@
         <mat-divider [inset]="true"></mat-divider>
         <app-add-task (click)="addTask()"></app-add-task>
       </mat-list>
-      <mat-list id="dones" *ngIf="getDoneTaskCount()">
+      <mat-list id="dones" *ngIf="doneTaskCount">
         <h3 mat-subheader>Done</h3>
         <mat-divider [inset]="true"></mat-divider>
         <app-done-item
