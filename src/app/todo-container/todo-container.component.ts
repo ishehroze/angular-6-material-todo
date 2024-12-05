@@ -3,7 +3,7 @@ import { TaskService } from '../task.service';
 import { Task } from '../task';
 import { HistoryService } from '../history.service';
 import { Activity, ActivityType } from '../activity';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-todo-container',
@@ -110,4 +110,12 @@ export class EditTaskDialogComponent {
 })
 export class AddTaskDialogComponent {
   public task: Task = new Task("", false);
+  
+  constructor (
+    public addTaskDialogRef: MatDialogRef<AddTaskDialogComponent>
+  ) {}
+
+  onEnter() {
+    this.addTaskDialogRef.close(this.task);
+  }
 }
