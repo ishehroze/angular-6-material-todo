@@ -12,6 +12,7 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 })
 export class TodoContainerComponent implements OnInit {
   tasks: Task[];
+  doneTaskCount: number;
 
   constructor(
     public taskService: TaskService,
@@ -27,6 +28,10 @@ export class TodoContainerComponent implements OnInit {
     this.taskService.getTasks().subscribe(
       tasks => { this.tasks = tasks; }
     )
+  }
+
+  getDoneTaskCount():number {
+    return this.tasks.filter(task => task.done).length;
   }
 
   addTask():void {
