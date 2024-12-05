@@ -77,6 +77,7 @@ export class TodoContainerComponent implements OnInit {
         this.historyService.addActivity(new Activity(ix, result.description, ActivityType.ADD));
       }
     })
+    this.getTasks();
   }
 
   deleteTask(ix:number):void {
@@ -96,6 +97,7 @@ export class TodoContainerComponent implements OnInit {
         task.done ? ActivityType.MARK_DONE : ActivityType.MARK_TO_DO
       )
     );
+    this.getTasks();
   }
 
   moveTaskUp(ix:number):void {
@@ -129,6 +131,7 @@ export class TodoContainerComponent implements OnInit {
         this.historyService.addActivity(new Activity(ix, task.description, ActivityType.EDIT));
       }
     })
+    this.getTasks();
   }
 }
 
