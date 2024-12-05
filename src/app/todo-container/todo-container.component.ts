@@ -75,9 +75,9 @@ export class TodoContainerComponent implements OnInit {
       if (result) {
         let ix = this.taskService.addTask(result);
         this.historyService.addActivity(new Activity(ix, result.description, ActivityType.ADD));
+        this.getTasks();      
       }
     })
-    this.getTasks();
   }
 
   deleteTask(ix:number):void {
@@ -129,9 +129,9 @@ export class TodoContainerComponent implements OnInit {
         let task = this.tasks[ix];
         this.taskService.updateTaskDescription(ix, result);
         this.historyService.addActivity(new Activity(ix, task.description, ActivityType.EDIT));
+        this.getTasks();
       }
     })
-    this.getTasks();
   }
 }
 
