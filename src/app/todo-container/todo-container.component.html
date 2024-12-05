@@ -16,7 +16,7 @@
         <mat-divider [inset]="true"></mat-divider>
         <app-add-task (click)="addTask()"></app-add-task>
       </mat-list>
-      <mat-list id="dones">
+      <mat-list id="dones" *ngIf="getDoneTaskCount()">
         <h3 mat-subheader>Done</h3>
         <mat-divider [inset]="true"></mat-divider>
         <app-done-item
