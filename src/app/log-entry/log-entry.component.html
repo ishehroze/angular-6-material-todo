@@ -3,7 +3,7 @@
   <p mat-line>{{ logEntry.getActivityTitle() }}</p>
   <p mat-line style="font-size: smaller;">{{ getActivityRemarks() }}</p>
   <div>
-    <p style="font-size: smaller; text-align: right;">{{ logEntry.getTimeStamp() }}</p>
+    <p style="font-size: smaller; text-align: right;">{{ logEntry.getTimeStamp() | date:'medium' }}</p>
   </div>
 </mat-list-item>
 <mat-divider [inset]="true"></mat-divider>
