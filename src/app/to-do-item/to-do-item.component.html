@@ -6,10 +6,10 @@
       style="cursor: pointer; user-select: none;"
       (click)="markDone()">check_box_outline_blank</mat-icon>
     <p mat-line>{{ task.description }}</p>
-    <button mat-icon-button (click)="moveUp()">
+    <button mat-icon-button (click)="moveUp()" [disabled]="index === firstUndoneTaskIx">
       <mat-icon>keyboard_arrow_up</mat-icon>
     </button>
-    <button mat-icon-button (click)="moveDown()">
+    <button mat-icon-button (click)="moveDown()" [disabled]="index === lastUndoneTaskIx">
       <mat-icon>keyboard_arrow_down</mat-icon>
     </button>
     <button mat-icon-button (click)="edit()">

@@ -9,6 +9,9 @@ import { Task } from '../task';
 export class ToDoItemComponent implements OnInit {
   @Input() task: Task;
   @Input() index: number;
+  @Input() doneTaskCount: number;
+  @Input() firstUndoneTaskIx: number;
+  @Input() lastUndoneTaskIx: number;
   @Output() markTaskDone = new EventEmitter<number>();
   @Output() deleteTask = new EventEmitter<number>();
   @Output() moveTaskUp = new EventEmitter<number>();

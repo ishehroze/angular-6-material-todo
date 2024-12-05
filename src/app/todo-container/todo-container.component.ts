@@ -13,6 +13,8 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
 export class TodoContainerComponent implements OnInit {
   tasks: Task[];
   doneTaskCount: number;
+  firstUndoneTaskIx: number;
+  lastUndoneTaskIx: number;
 
   constructor(
     public taskService: TaskService,
@@ -26,12 +28,43 @@ export class TodoContainerComponent implements OnInit {
 
   getTasks():void {
     this.taskService.getTasks().subscribe(
-      tasks => { this.tasks = tasks; }
+      tasks => {
+        this.tasks = tasks;
+        this.updateProperties();
+      }
     )
   }
 
-  getDoneTaskCount():number {
-    return this.tasks.filter(task => task.done).length;
+  updateProperties():void {
+    let doneTaskCount = 0;
+    let firstUndoneTaskIx = 0;
+    let lastUndoneTaskIx = 0;
+    
+    let ix = 0;
+    let taskCount = this.tasks.length;
+
+    for (ix = 0; ix < taskCount; ix++) {
+      if (!this.tasks[ix]['done']) {
+        firstUndoneTaskIx = ix;
+        break;
+      } else {
+        doneTaskCount++;
+      }
+    }
+
+    lastUndoneTaskIx = ix;
+
+    for (ix = ix + 1; ix < taskCount; ix++) {
+      if (!this.tasks[ix]['done']) {
+        lastUndoneTaskIx = ix;
+      } else {
+        doneTaskCount++;
+      }
+    }
+
+    this.firstUndoneTaskIx = firstUndoneTaskIx;
+    this.lastUndoneTaskIx = lastUndoneTaskIx;
+    this.doneTaskCount = doneTaskCount;
   }
 
   addTask():void {
@@ -42,6 +75,7 @@ export class TodoContainerComponent implements OnInit {
       if (result) {
         let ix = this.taskService.addTask(result);
         this.historyService.addActivity(new Activity(ix, result.description, ActivityType.ADD));
+        this.getTasks();      
       }
     })
   }
@@ -63,6 +97,7 @@ export class TodoContainerComponent implements OnInit {
         task.done ? ActivityType.MARK_DONE : ActivityType.MARK_TO_DO
       )
     );
+    this.getTasks();
   }
 
   moveTaskUp(ix:number):void {
@@ -94,6 +129,7 @@ export class TodoContainerComponent implements OnInit {
         let task = this.tasks[ix];
         this.taskService.updateTaskDescription(ix, result);
         this.historyService.addActivity(new Activity(ix, task.description, ActivityType.EDIT));
+        this.getTasks();
       }
     })
   }
